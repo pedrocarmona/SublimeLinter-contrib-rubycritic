@@ -5,6 +5,9 @@ SublimeLinter-contrib-rubycritic
 
 This linter plugin for [SublimeLinter][docs] provides an interface to [rubycritic](__linter_homepage__). It will be used with files that have the “__syntax__” syntax.
 
+![ScreenShot](http://s7.postimg.org/aaufbhhob/Screen_Shot_2015_10_18_at_23_12_25.png)
+
+
 ## Installation
 SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here][installation].
 
@@ -13,39 +16,38 @@ Before using this plugin, you must ensure that `rubycritic` is installed on your
 
 1. Install [Ruby](http://www.ruby-lang.org).
 
-1. Install `rubycritic` by typing the following in a terminal:
-   ```
-   [sudo] gem install rubycritic
-   ```
+1. Download the source:
+  ```
+  git clone -b add-emacs-report  git@github.com:pedrocarmona/rubycritic.git
+  ```
+
+1. Build the gem:
+  ```
+  cd rubycritic && bundle exec rake install
+  ```
 
 1. If you are using `rbenv` or `rvm`, ensure that they are loaded in your shell’s correct startup file. See [here](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#shell-startup-files) for more information.
   ```
   rbenv rehash
   ```
 
+1. test in sublime console (View > show console)
+  ```
+  gem install rubycritic
+  import os
+  s.system("rubycritic")
+  ```
 
-1. test in sublime console
-      View > show console
-      enter:
-      ```
-          gem install rubycritic
-          import os
-          s.system("rubycritic")
-      ```
+1. should give result 0, if result is 32512, please do these istructions in you command line:
+  ```
+  which rubycritic
+  ```
 
-      should give result 0, if result is 32512, please do these istructions in you command line:
-      ```
-        which rubycritic
-
-        browser packages in sublime, find rubycritic, and replace rubycritic with the path from the previous command
-
-
-
-        # Other solution for future, CURRENTLY NOT WORKING SYMBOLIC LINK
-        # copy the output and do this
-        # ln -s [OUTPUT] /usr/local/bin/rubycritic
-        # rbenv example: ln -s /Users/YOURUSERNAME/.rbenv/shims/rubycritic /usr/local/bin/rubycritic
-      ```
+1. copy the output and do this
+  ```
+  ln -s [OUTPUT] /usr/local/bin/rubycritic
+  # rbenv example: ln -s /Users/YOURUSERNAME/.rbenv/shims/rubycritic /usr/local/bin/rubycritic
+  ```
 
 **Note:** This plugin requires `rubycritic` __version__ or later.
 
